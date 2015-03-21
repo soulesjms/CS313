@@ -9,6 +9,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <style>
+body 
+{
+    padding:20px;
+}
 #top {
 	width:100%;
 	background-color:#9FF;
@@ -55,12 +59,13 @@
 </head>
 <body>
 <div id="top">
-    <div id="welcome">Welcome to BarterSpace!</div>
+    <div id="welcome"><h1>Welcome to BarterSpace!<h1></div>
     <div id="login" style="float:right">
       <form action="" method="post">
         Login:  <input type="text" name="username" placeholder="username"/>	
         <input type="password" placeholder="password"/>
         <a href="SignIn"><img src="FBloginbutton.png" width="108" height="34" /></a>
+        <a href="createPost.html">Create a new post</a>
       </form>
     </div>
 </div>

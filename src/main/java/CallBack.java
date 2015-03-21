@@ -41,7 +41,7 @@ public class CallBack extends HttpServlet {
         try {
             facebook.getOAuthAccessToken(oauthCode);
         } catch (FacebookException ex) {
-            Logger.getLogger(CallBack.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
         response.sendRedirect("welcome.jsp");
     }

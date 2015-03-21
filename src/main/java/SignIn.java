@@ -20,35 +20,24 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = {"/SignIn"})
 public class SignIn extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         Facebook facebook = new FacebookFactory().getInstance();
-        
         request.getSession().setAttribute("facebook", facebook);
-        
-        String Id = "868292349876914";
-        String secret = "473f3e315c5d27e90dbe0ea5f4e887b1";
 
         //get something like: http://localhost:8080/FacebookClassDemo/Signin
         StringBuffer requestUrl = request.getRequestURL();
         int lastSlashIndex = requestUrl.lastIndexOf("/");
         String callBackUrl = requestUrl.substring(0, lastSlashIndex) + "/CallBack";
         
-        //response.getWriter().write("The callBack url is: " + callBackUrl);
+        response.getWriter().write("The callBack url is: " + callBackUrl);
         
         String facebookUrl = facebook.getOAuthAuthorizationURL(callBackUrl);
+        System.out.println(callBackUrl);
         
-        //response.getWriter().write("The callBack url is: " + facebookUrl);
+        response.getWriter().write("The callBack url is: " + facebookUrl);
+        System.out.println(facebookUrl);
         
         response.sendRedirect(facebookUrl);
     }

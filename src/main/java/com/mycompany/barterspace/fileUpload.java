@@ -46,14 +46,16 @@ public class fileUpload extends HttpServlet {
      */
        // database connection settings
     private String dbURL = "";
-    private final String dbUser = "admincBquXP8";
-    private final String dbPass = "WgFrwSfNQBZ9";
+    private String dbUser = "";
+    private String dbPass = "";
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         
-        dbURL = System.getenv("OPENSHIFT_MYSQL_DB_URL");
+        dbURL = System.getenv("jdbc:" + "OPENSHIFT_MYSQL_DB_URL");
+        dbUser = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
+        dbPass = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
         
         //String firstName = request.getParameter("firstName");
         //String lastName = request.getParameter("lastName");

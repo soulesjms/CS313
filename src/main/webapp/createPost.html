@@ -56,7 +56,7 @@
 <div id="top">
     <div id="welcome"><h1>Welcome to BarterSpace!<h1></div>
     <div id="login" style="float:right">
-      <form action="" method="post">
+      <form action="" method="post" enctype="multipart/form-data">
         Login:  <input type="text" name="username" placeholder="username"/>	
         <input type="password" placeholder="password"/>
         <img src="FBloginbutton.png" width="108" height="34" />
@@ -65,9 +65,9 @@
 </div>
 <p id="createPost">
 <h2>Create a new post</h2>
-	<form action="" method="post">
-    	<input type="text" placeholder="Title"/><br /><br />
-        <textarea rows="10" cols="50" placeholder="Enter post text here..."></textarea><br /><br />
+	<form action="fileUpload" method="post" enctype="multipart/form-data">
+    	<input type="text" placeholder="Title" name="title"/><br /><br />
+        <textarea rows="10" cols="50" placeholder="Enter post text here..." name="info"></textarea><br /><br />
         <input type="file" name="photo" size="50" />
     	<input type="submit" value="Create"/><input type="reset" />
     </form>

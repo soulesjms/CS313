@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -44,15 +45,17 @@ public class fileUpload extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
        // database connection settings
-    private final String dbURL = "jdbc:mysql://localhost:3306/barter";
-    private final String dbUser = "ron";
-    private final String dbPass = "barter";
+    private final String dbURL = "127.7.146.2";
+    private final String dbUser = "admincBquXP8";
+    private final String dbPass = "WgFrwSfNQBZ9";
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         //String firstName = request.getParameter("firstName");
         //String lastName = request.getParameter("lastName");
+        String info = request.getParameter("info");
+        String title = request.getParameter("title");
         
         InputStream inputStream = null; // input stream of the upload file
         
@@ -77,11 +80,16 @@ public class fileUpload extends HttpServlet {
             conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
  
             // constructs SQL statement
+            
             String sql = "INSERT INTO image (image) values (?)";
             PreparedStatement statement = conn.prepareStatement(sql);
             //statement.setString(1, firstName);
             //statement.setString(2, lastName);
-             
+            String sql2 = "INSERT INTO item (title, item_desc) VALUES (?,?)";
+            PreparedStatement stmt = conn.prepareStatement(sql2);
+            stmt.setString(1, title);
+            stmt.setString(2,info);
+            
             if (inputStream != null) {
                 // fetches input stream of the upload file for the blob column
                 statement.setBlob(1, inputStream);

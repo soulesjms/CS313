@@ -77,7 +77,7 @@ public class fileUpload extends HttpServlet {
             try {
             // connects to the database
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-            conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
+            conn = (Connection) DriverManager.getConnection(dbURL, dbUser, dbPass);
  
             // constructs SQL statement
             

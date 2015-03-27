@@ -53,7 +53,7 @@ public class fileUpload extends HttpServlet {
             throws ServletException, IOException {
 
         
-        dbURL = System.getenv("jdbc:" + "OPENSHIFT_MYSQL_DB_URL");
+        dbURL = "jdbc:" + System.getenv("OPENSHIFT_MYSQL_DB_URL");
         dbUser = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
         dbPass = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
         

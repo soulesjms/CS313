@@ -45,7 +45,7 @@ public class fileUpload extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
        // database connection settings
-    private final String dbURL = "mysql://admincBquXP8:WgFrwSfNQBZ9@127.7.146.2:3306/";
+    private final String dbURL = "jdbc:mysql://admincBquXP8:WgFrwSfNQBZ9@127.7.146.2:3306/";
     private final String dbUser = "admincBquXP8";
     private final String dbPass = "WgFrwSfNQBZ9";
     

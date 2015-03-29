@@ -45,13 +45,18 @@ public class fileUpload extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
        // database connection settings
-    private final String dbURL = "127.7.146.2";
-    private final String dbUser = "admincBquXP8";
-    private final String dbPass = "WgFrwSfNQBZ9";
+    private String dbURL = "";
+    private String dbUser = "";
+    private String dbPass = "";
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        
+        dbURL = "jdbc:" + System.getenv("OPENSHIFT_MYSQL_DB_URL");
+        dbUser = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
+        dbPass = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
+        
         //String firstName = request.getParameter("firstName");
         //String lastName = request.getParameter("lastName");
         String info = request.getParameter("info");
@@ -77,7 +82,7 @@ public class fileUpload extends HttpServlet {
             try {
             // connects to the database
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-            conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
+            conn = (Connection) DriverManager.getConnection(dbURL, dbUser, dbPass);
  
             // constructs SQL statement
             

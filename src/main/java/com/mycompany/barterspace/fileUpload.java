@@ -19,6 +19,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sql.*;
+import javax.naming.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -48,12 +52,16 @@ public class fileUpload extends HttpServlet {
     private String dbURL = "";
     private String dbUser = "";
     private String dbPass = "";
+    private String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+    private String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
+    
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, NamingException {
 
         
-        dbURL = "jdbc:" + System.getenv("OPENSHIFT_MYSQL_DB_URL");
+        dbURL = "jdbc:mysql://" + host + ":" + port + "/" + "barter";
+        //dbURL = "jdbc:" + System.getenv("OPENSHIFT_MYSQL_DB_URL");
         dbUser = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
         dbPass = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
         
@@ -82,6 +90,10 @@ public class fileUpload extends HttpServlet {
             try {
             // connects to the database
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+            //InitialContext ic = new InitialContext();
+            //Context initialContext = (Context) ic.lookup("java:comp/env");
+            //DataSource datasource = (DataSource) initialContext.lookup("jdbc/MySQLDS");
+            //conn = datasource.getConnection();
             conn = (Connection) DriverManager.getConnection(dbURL, dbUser, dbPass);
  
             // constructs SQL statement
@@ -93,7 +105,7 @@ public class fileUpload extends HttpServlet {
             String sql2 = "INSERT INTO item (title, item_desc) VALUES (?,?)";
             PreparedStatement stmt = conn.prepareStatement(sql2);
             stmt.setString(1, title);
-            stmt.setString(2,info);
+            stmt.setString(2, info);
             
             if (inputStream != null) {
                 // fetches input stream of the upload file for the blob column
@@ -102,7 +114,8 @@ public class fileUpload extends HttpServlet {
  
             // sends the statement to the database server
             int row = statement.executeUpdate();
-            if (row > 0) {
+            int row2 = stmt.executeUpdate();
+            if (row > 0 && row2 > 0) {
                 message = "File uploaded and saved into database";
             }
         } catch (SQLException ex) {
@@ -119,6 +132,7 @@ public class fileUpload extends HttpServlet {
             }
             // sets the message in request scope
             request.setAttribute("message", message);
+            request.setAttribute("variable", dbURL);
              
             // forwards to the message page
             getServletContext().getRequestDispatcher("/message.jsp").forward(request, response);
@@ -138,7 +152,11 @@ public class fileUpload extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (NamingException ex) {
+            Logger.getLogger(fileUpload.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -152,7 +170,11 @@ public class fileUpload extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (NamingException ex) {
+            Logger.getLogger(fileUpload.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

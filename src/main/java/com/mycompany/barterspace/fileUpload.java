@@ -52,12 +52,15 @@ public class fileUpload extends HttpServlet {
     private String dbURL = "";
     private String dbUser = "";
     private String dbPass = "";
+    private String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+    private String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, NamingException {
 
         
-        dbURL = "jdbc:" + System.getenv("OPENSHIFT_MYSQL_DB_URL");
+        dbURL = String.format(":mysql://%s:%s/jbossas", host, port);
+        //dbURL = "jdbc:" + System.getenv("OPENSHIFT_MYSQL_DB_URL");
         dbUser = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
         dbPass = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
         
@@ -86,11 +89,11 @@ public class fileUpload extends HttpServlet {
             try {
             // connects to the database
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-            InitialContext ic = new InitialContext();
-            Context initialContext = (Context) ic.lookup("java:comp/env");
-            DataSource datasource = (DataSource) initialContext.lookup("jdbc/MySQLDS");
-            conn = datasource.getConnection();
-            //conn = (Connection) DriverManager.getConnection(dbURL, dbUser, dbPass);
+            //InitialContext ic = new InitialContext();
+            //Context initialContext = (Context) ic.lookup("java:comp/env");
+            //DataSource datasource = (DataSource) initialContext.lookup("jdbc/MySQLDS");
+            //conn = datasource.getConnection();
+            conn = (Connection) DriverManager.getConnection(dbURL, dbUser, dbPass);
  
             // constructs SQL statement
             

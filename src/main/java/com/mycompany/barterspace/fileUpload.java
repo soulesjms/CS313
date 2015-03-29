@@ -55,11 +55,12 @@ public class fileUpload extends HttpServlet {
     private String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
     private String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
     
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, NamingException {
 
         
-        dbURL = String.format(":mysql://%s:%s/jbossas", host, port);
+        dbURL = "jdbc:mysql://" + host + ":" + port;
         //dbURL = "jdbc:" + System.getenv("OPENSHIFT_MYSQL_DB_URL");
         dbUser = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
         dbPass = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");

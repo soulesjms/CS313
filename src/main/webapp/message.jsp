@@ -13,5 +13,6 @@
     </head>
     <body>
         <h3><%=request.getAttribute("message")%></h3>
+        <h3><%=request.getAttribute("variable")%></h3>
     </body>
 </html>

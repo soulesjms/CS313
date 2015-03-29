@@ -127,6 +127,7 @@ public class fileUpload extends HttpServlet {
             }
             // sets the message in request scope
             request.setAttribute("message", message);
+            request.setAttribute("variable", dbURL);
              
             // forwards to the message page
             getServletContext().getRequestDispatcher("/message.jsp").forward(request, response);

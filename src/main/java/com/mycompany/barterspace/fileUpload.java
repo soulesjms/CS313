@@ -105,7 +105,7 @@ public class fileUpload extends HttpServlet {
             String sql2 = "INSERT INTO item (title, item_desc) VALUES (?,?)";
             PreparedStatement stmt = conn.prepareStatement(sql2);
             stmt.setString(1, title);
-            stmt.setString(2,info);
+            stmt.setString(2, info);
             
             if (inputStream != null) {
                 // fetches input stream of the upload file for the blob column
@@ -114,7 +114,8 @@ public class fileUpload extends HttpServlet {
  
             // sends the statement to the database server
             int row = statement.executeUpdate();
-            if (row > 0) {
+            int row2 = stmt.executeUpdate();
+            if (row > 0 && row2 > 0) {
                 message = "File uploaded and saved into database";
             }
         } catch (SQLException ex) {

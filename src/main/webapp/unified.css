@@ -1,0 +1,44 @@
+@charset "utf-8";
+/* CSS Document */
+
+#top {
+	width:100%;
+	background-color:#9FF;
+	height:100px;
+	vertical-align:middle;
+	padding:30px
+}
+#welcome {
+	font-size:24px;
+	float:left;
+	width:60%;
+}
+#login {
+	width:40%;	
+}
+#recentSearches
+{
+	padding:10px;
+	font-size:18px;
+}
+.recent {
+	border: black solid 2px;
+	width: 22%;
+	position: relative;
+	float: left;
+	margin: 10px;
+	padding: 20px;
+}
+.suggestions p {
+	font: 12px/18px Arial, sans-serif;
+	color: #333;
+	margin: 0;
+}
+.suggestions{
+	width: 22%;
+	position:relative;
+	border:black solid 1px;	
+	float: left;
+	margin: 10px;
+	padding:20px;
+}

@@ -8,53 +8,7 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<style>
-body 
-{
-    padding:20px;
-}
-#top {
-	width:100%;
-	background-color:#9FF;
-	height:100px;
-	vertical-align:middle;
-}
-#welcome {
-	font-size:24px;
-	float:left;
-	width:72%;
-	padding:25px;
-}
-#login {
-	width:27%;	
-}
-#recentSearches
-{
-	padding:10px;
-	font-size:18px;
-}
-.recent {
-	border: black solid 2px;
-	width: 22%;
-	position: relative;
-	float: left;
-	margin: 10px;
-	padding: 20px;
-}
-.suggestions p {
-	font: 12px/18px Arial, sans-serif;
-	color: #333;
-	margin: 0;
-}
-.suggestions{
-	width: 22%;
-	position:relative;
-	border:black solid 1px;	
-	float: left;
-	margin: 10px;
-	padding:20px;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="unified.css">
 
 </head>
 <body>

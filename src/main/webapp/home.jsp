@@ -14,7 +14,7 @@
 <div id="top">
     <div id="welcome">Welcome to BarterSpace!</div>
     <div id="login" style="float:right">
-      <form action="index.php" method="post" name="loginform">
+      <form action="" method="post" name="loginform">
         Login:
         <input id="login_input_username" class="login_input" type="text" name="user_name" required />	
         <input id="login_input_password" class="login_input" type="password" name="user_password" autocomplete="off" required />

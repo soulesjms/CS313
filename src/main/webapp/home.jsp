@@ -23,6 +23,7 @@
         <input type="submit" name="login" value="Log in" />
         <a href="SignIn"><img src="Pictures/FBloginbutton.png" width="108" height="34" /></a>
       </form>
+        
     </div>
 </div>
 </body>

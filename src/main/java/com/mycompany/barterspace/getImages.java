@@ -18,6 +18,7 @@ import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -78,10 +79,15 @@ public class getImages extends HttpServlet {
             
             String sql = "SELECT * FROM image";
             PreparedStatement statement = conn.prepareStatement(sql);
- 
+            ResultSet rs = statement.executeQuery();
+            
+            String image = rs.getBlob(1).toString();
+            PrintWriter out = response.getWriter();
+            out.write(image);
+            
+            
             // sends the statement to the database server
-            int row = statement.executeUpdate();
-            System.out.print(row);
+            
 
         } catch (SQLException ex) {
             message = "ERROR: " + ex.getMessage();
@@ -95,6 +101,7 @@ public class getImages extends HttpServlet {
                     ex.printStackTrace();
                 }
             }
+            request.setAttribute("message", message);
 
         }
 

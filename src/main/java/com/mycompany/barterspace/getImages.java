@@ -102,7 +102,7 @@ public class getImages extends HttpServlet {
                 }
             }
             //request.setAttribute("image", message);
-            getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/welcome.jsp").forward(request, response);
         }
 
     }

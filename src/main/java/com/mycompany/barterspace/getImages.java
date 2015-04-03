@@ -83,7 +83,7 @@ public class getImages extends HttpServlet {
             
             String image = rs.getBlob(1).toString();
             PrintWriter out = response.getWriter();
-            out.write(image);
+            out.write("Does this work?");
             
             
             // sends the statement to the database server
@@ -101,8 +101,7 @@ public class getImages extends HttpServlet {
                     ex.printStackTrace();
                 }
             }
-            request.setAttribute("message", message);
-
+            request.setAttribute("image", message);
         }
 
     }

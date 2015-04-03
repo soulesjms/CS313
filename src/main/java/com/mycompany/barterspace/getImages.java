@@ -5,6 +5,9 @@
  */
 package com.mycompany.barterspace;
 
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -66,7 +70,7 @@ public class getImages extends HttpServlet {
         Connection conn = null; // connection to the database
         String message = null;  // message will be sent back to client
         
-                    try {
+            try {
             // connects to the database
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());
             //InitialContext ic = new InitialContext();
@@ -80,10 +84,19 @@ public class getImages extends HttpServlet {
             String sql = "SELECT * FROM image";
             PreparedStatement statement = conn.prepareStatement(sql);
             ResultSet rs = statement.executeQuery();
-            
-            String image = rs.getBlob(1).toString();
+            Blob image = rs.getBlob(1);
+            byte[] buf = new byte[4096];
+            OutputStream to = new ByteArrayOutputStream();
+            try(InputStream is = image.getBinaryStream()){
+                while(true){
+                    int r = is.read(buf);
+                    if (r == -1){
+                        break;
+                    }
+                    to.write(buf, 0, r);
+                }
+            }
             PrintWriter out = response.getWriter();
-            out.write("Does this work?");
             request.setAttribute("image", image);
             
             // sends the statement to the database server

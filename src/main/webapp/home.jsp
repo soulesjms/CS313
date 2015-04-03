@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=windows-1256" pageEncoding="windows-1256" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -14,12 +16,12 @@
 <div id="top">
     <div id="welcome">Welcome to BarterSpace!</div>
     <div id="login" style="float:right">
-      <form action="" method="post" name="loginform">
+      <form action="FirstExample" method="post" name="loginform">
         Login:
         <input id="login_input_username" class="login_input" type="text" name="user_name" required />	
         <input id="login_input_password" class="login_input" type="password" name="user_password" autocomplete="off" required />
         <input type="submit" name="login" value="Log in" />
-        <a href="SignIn"><img src="FBloginbutton.png" width="108" height="34" /></a>
+        <a href="SignIn"><img src="Pictures/FBloginbutton.png" width="108" height="34" /></a>
       </form>
     </div>
 </div>

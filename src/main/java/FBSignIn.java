@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Jonny
  */
 @WebServlet(urlPatterns = {"/SignIn"})
-public class SignIn extends HttpServlet {
+public class FBSignIn extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

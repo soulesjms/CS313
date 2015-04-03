@@ -37,7 +37,7 @@
     <p id="suggestions">
     <!-- this is where we want to place the posts to our user. 
     The above posts are the posts the host wants to show the user.-->
-    <div class="suggestions">here is an example post</div>
+    <div class="suggestions"><%=request.getAttribute("image")%></div>
     </p>
 </body>
 </html>

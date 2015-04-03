@@ -84,7 +84,7 @@ public class getImages extends HttpServlet {
             String image = rs.getBlob(1).toString();
             PrintWriter out = response.getWriter();
             out.write("Does this work?");
-            
+            request.setAttribute("image", image);
             
             // sends the statement to the database server
             
@@ -101,7 +101,8 @@ public class getImages extends HttpServlet {
                     ex.printStackTrace();
                 }
             }
-            request.setAttribute("image", message);
+            //request.setAttribute("image", message);
+            getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
         }
 
     }

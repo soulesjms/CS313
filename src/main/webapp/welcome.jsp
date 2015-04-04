@@ -40,7 +40,7 @@ function positionBlocks() {
 		var leftPos = margin+(index*(colWidth+margin));
 		$(this).css({
 			'left':leftPos+'px',
-			'top':min+'px'
+			'top':min+ 300 + 'px'
 		});
 		blocks[index] = min+$(this).outerHeight()+margin;
 	});	
@@ -52,7 +52,7 @@ Array.min = function(array) {
 };
 </script>
 </head>
-<body>
+<body onload="setupBlocks();">
     <div id="top">
         <div id="welcome"><h1>Welcome to BarterSpace!<h1></div>
         <div id="login" style="float:right">
@@ -78,7 +78,7 @@ Array.min = function(array) {
             <img src="Pictures/ps4.jpg" width="282" height="179" />
         </div>
     </p>
-    <div onload="setupBlocks();">
+    <div>
         <!-- this is where we want to place the posts to our user. 
         The above posts are the posts the host wants to show the user.-->
         <div class="block">

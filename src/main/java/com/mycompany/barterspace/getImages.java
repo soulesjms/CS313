@@ -24,6 +24,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sql.*;
@@ -81,13 +82,14 @@ public class getImages extends HttpServlet {
  
             // constructs SQL statement
             
-            String sql = "SELECT * FROM image";
+            String sql = "SELECT title FROM item";
             PreparedStatement statement = conn.prepareStatement(sql);
             ResultSet rs = statement.executeQuery();
-            Blob image = rs.getBlob(1);
-            byte[] buf = new byte[4096];
-            OutputStream to = new ByteArrayOutputStream();
-            try(InputStream is = image.getBinaryStream()){
+            //Blob image = rs.getBlob(1);
+            //byte[] buf = new byte[4096];
+            //OutputStream to = new ByteArrayOutputStream();
+            
+            /*try(InputStream is = image.getBinaryStream()){
                 while(true){
                     int r = is.read(buf);
                     if (r == -1){
@@ -97,7 +99,20 @@ public class getImages extends HttpServlet {
                 }
             }
             PrintWriter out = response.getWriter();
-            request.setAttribute("image", image);
+            request.setAttribute("image", image);*/
+            
+            ArrayList al = null;
+            ArrayList title = new ArrayList();
+            while(rs.next()){
+                
+                al = new ArrayList();
+                int i = 1;
+                
+                al.add(rs.getString(i));
+                title.add(al);
+            }
+            request.setAttribute("title", title);
+            getServletContext().getRequestDispatcher("/welcome.jsp").forward(request, response);
             
             // sends the statement to the database server
             
@@ -115,7 +130,7 @@ public class getImages extends HttpServlet {
                 }
             }
             //request.setAttribute("image", message);
-            getServletContext().getRequestDispatcher("/welcome.jsp").forward(request, response);
+            //getServletContext().getRequestDispatcher("/welcome.jsp").forward(request, response);
         }
 
     }

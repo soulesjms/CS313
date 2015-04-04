@@ -40,7 +40,7 @@ function positionBlocks() {
 		var leftPos = margin+(index*(colWidth+margin));
 		$(this).css({
 			'left':leftPos+'px',
-			'top':min+ 300 + 'px'
+			'top':min+ 350 + 'px'
 		});
 		blocks[index] = min+$(this).outerHeight()+margin;
 	});	

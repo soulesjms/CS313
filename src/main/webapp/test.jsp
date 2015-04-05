@@ -4,7 +4,7 @@
     Author     : Jonny
 --%>
 
-<%@page import="java.sql.ResultSetMetaData"%>
+<%@page import="java.sql.Blob"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.DriverManager"%>
@@ -18,31 +18,27 @@
     String dbUser = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
     String dbPass = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
     String dbURL = "jdbc:mysql://" + host + ":" + port + "/" + "barter";
-   
-    //String user = request.getParameter("user_name");
-    //String pwd = request.getParameter("pass");
     
     Class.forName("com.mysql.jdbc.Driver");
     Connection con = DriverManager.getConnection(dbURL, dbUser, dbPass);
     Statement st = con.createStatement();
 
     ResultSet rs;
-    rs = st.executeQuery("SELECT * FROM item");
+    rs = st.executeQuery("SELECT title FROM item");
     out.println("printing out result from query: selecting title from item" + "<br>");
     out.println("moving cursor to last item in result set" + "<br>");
     rs.last();
-    ResultSetMetaData rsmd = rs.getMetaData();
-    int columnsNumber = rsmd.getColumnCount();
-    while (rs.next()) {
-        for (int i = 1; i <= columnsNumber; i++) {
-            if (i > 1) out.print(",  ");
-            String columnValue = rs.getString(i);
-            out.print(columnValue + " " + rsmd.getColumnName(i));
-        }
-    }
-    //String title = rs.getString("title");
-    //out.println("title is:" + title + "<br>");
-    %>
+
+    String title = rs.getString("title");
+    out.println("title is:" + title + "<br>");
+    
+    rs = st.executeQuery("SELECT image FROM image");
+    out.println("testing query on image" + "<br>");
+    rs.last();
+    
+    Blob image = rs.getBlob("image");
+    out.println("image blob is:" + image + "<br>");
+%>
 <!DOCTYPE html>
 <html>
     <head>

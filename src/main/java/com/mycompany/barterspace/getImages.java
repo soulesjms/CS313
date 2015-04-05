@@ -82,7 +82,7 @@ public class getImages extends HttpServlet {
  
             // constructs SQL statement
             
-            String sql = "SELECT title FROM item";
+            String sql = "SELECT title FROM item WHERE item_id=1";
             PreparedStatement statement = conn.prepareStatement(sql);
             ResultSet rs = statement.executeQuery();
             //Blob image = rs.getBlob(1);
@@ -106,7 +106,7 @@ public class getImages extends HttpServlet {
             
             String title = rs.getString("title");
             
-            //request.setAttribute("title", title);
+            request.setAttribute("title", title);
             //getServletContext().getRequestDispatcher("/welcome.jsp").forward(request, response);
             
             // sends the statement to the database server

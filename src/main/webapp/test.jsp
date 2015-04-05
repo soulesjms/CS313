@@ -26,12 +26,14 @@
     Statement st = con.createStatement();
 
     ResultSet rs;
-    rs = st.executeQuery("SELECT title FROM item");
-    out.print("printing out result from query: selecting title from item");
+    rs = st.executeQuery("SELECT * FROM item");
+    out.println("printing out result from query: selecting title from item");
     out.println("moving cursor to last item in result set");
     rs.last();
+    String test = rs.toString();
+    out.println("testing: " + test);
     String title = rs.getString("title");
-    out.print("title is:" + title);
+    out.println("title is:" + title);
     %>
 <!DOCTYPE html>
 <html>

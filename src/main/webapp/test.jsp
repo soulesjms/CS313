@@ -40,8 +40,8 @@
             out.print(columnValue + " " + rsmd.getColumnName(i));
         }
     }
-    String title = rs.getString("title");
-    out.println("title is:" + title + "<br>");
+    //String title = rs.getString("title");
+    //out.println("title is:" + title + "<br>");
     %>
 <!DOCTYPE html>
 <html>

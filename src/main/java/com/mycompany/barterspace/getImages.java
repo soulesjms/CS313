@@ -70,6 +70,7 @@ public class getImages extends HttpServlet {
         
         Connection conn = null; // connection to the database
         String message = null;  // message will be sent back to client
+        String title = null;
         
             try {
             // connects to the database
@@ -104,9 +105,9 @@ public class getImages extends HttpServlet {
             //ArrayList al = null;
             //ArrayList title = new ArrayList();
             
-            String title = rs.getString("title");
+            title = rs.getString("title");
             
-            request.setAttribute("title", title);
+            //request.setAttribute("title", title);
             //getServletContext().getRequestDispatcher("/welcome.jsp").forward(request, response);
             
             // sends the statement to the database server
@@ -124,7 +125,7 @@ public class getImages extends HttpServlet {
                     ex.printStackTrace();
                 }
             }
-            //request.setAttribute("title", title);
+            request.setAttribute("title", title);
             getServletContext().getRequestDispatcher("/welcome.jsp").forward(request, response);
         }
 

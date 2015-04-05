@@ -26,9 +26,10 @@
     Statement st = con.createStatement();
 
     ResultSet rs;
-    rs = st.executeQuery("select * from user");
-    out.print(rs.next());
-    
+    rs = st.executeQuery("SELECT title FROM item");
+    out.print("printing out result from query: selecting title from item");
+    String title = rs.getString("title");
+    out.print("title is:" + title);
     %>
 <!DOCTYPE html>
 <html>

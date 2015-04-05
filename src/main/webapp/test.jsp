@@ -4,6 +4,9 @@
     Author     : Jonny
 --%>
 
+<%@page import="javax.imageio.ImageIO"%>
+<%@page import="java.awt.image.BufferedImage"%>
+<%@page import="java.io.ByteArrayInputStream"%>
 <%@page import="java.sql.Blob"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
@@ -40,6 +43,9 @@
     out.println("image blob is:" + image + "<br>");
     int length = (int)image.length();
     byte data[] = image.getBytes(0, length);
+    BufferedImage img = ImageIO.read(new ByteArrayInputStream(data));
+    String simage = img.toString();
+    out.println(simage);
 %>
 <!DOCTYPE html>
 <html>

@@ -101,18 +101,12 @@ public class getImages extends HttpServlet {
             PrintWriter out = response.getWriter();
             request.setAttribute("image", image);*/
             
-            ArrayList al = null;
-            ArrayList title = new ArrayList();
-            while(rs.next()){
-                
-                al = new ArrayList();
-                int i = 1;
-                
-                al.add(rs.getString(i));
-                title.add(al);
-                request.setAttribute("title", title);
-            }
+            //ArrayList al = null;
+            //ArrayList title = new ArrayList();
             
+            String title = rs.getString("title");
+            
+            request.setAttribute("title", title);
             getServletContext().getRequestDispatcher("/welcome.jsp").forward(request, response);
             
             // sends the statement to the database server

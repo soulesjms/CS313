@@ -43,7 +43,7 @@ public class CallBack extends HttpServlet {
         } catch (FacebookException ex) {
             ex.printStackTrace();
         }
-        response.sendRedirect("welcome.jsp");
+        response.sendRedirect("getImages");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

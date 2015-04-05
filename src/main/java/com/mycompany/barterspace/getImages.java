@@ -110,8 +110,9 @@ public class getImages extends HttpServlet {
                 
                 al.add(rs.getString(i));
                 title.add(al);
+                request.setAttribute("title", title);
             }
-            request.setAttribute("title", title);
+            
             getServletContext().getRequestDispatcher("/welcome.jsp").forward(request, response);
             
             // sends the statement to the database server

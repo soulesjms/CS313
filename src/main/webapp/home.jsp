@@ -16,15 +16,15 @@
 <div id="top">
     <div id="welcome">Welcome to BarterSpace!</div>
     <div id="login" style="float:right">
-      <form action="FirstExample" method="post" name="loginform">
+      <form action="login.jsp" method="post" name="loginform">
         Login:
         <input id="login_input_username" class="login_input" type="text" name="user_name" required />	
         <input id="login_input_password" class="login_input" type="password" name="user_password" autocomplete="off" required />
         <input type="submit" name="login" value="Log in" />
         <a href="SignIn"><img src="Pictures/FBloginbutton.png" width="108" height="34" /></a>
+        <a href="reg.jsp">Register</a><br />
         <a href="test.jsp">test</a>
       </form>
-        
     </div>
 </div>
 </body>

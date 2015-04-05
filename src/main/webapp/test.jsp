@@ -28,6 +28,8 @@
     ResultSet rs;
     rs = st.executeQuery("SELECT title FROM item");
     out.print("printing out result from query: selecting title from item");
+    out.println("moving cursor to last item in result set");
+    rs.last();
     String title = rs.getString("title");
     out.print("title is:" + title);
     %>

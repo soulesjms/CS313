@@ -10,20 +10,19 @@
 <%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    out.println("testing database connectivity...");
-    String USER = "OPENSHIFT_MYSQL_DB_USERNAME";
-    String PASS = "OPENSHIFT_MYSQL_DB_PASSWORD";
-    
     String host = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
     String port = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
 
-    String DB_URL = "jdbc:mysql://" + host + ":" + port + "/" + "barter";
+    out.println("testing database connectivity...");
+    String dbUser = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
+    String dbPass = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
+    String dbURL = "jdbc:mysql://" + host + ":" + port + "/" + "barter";
    
-    String user = request.getParameter("user_name");
-    String pwd = request.getParameter("pass");
+    //String user = request.getParameter("user_name");
+    //String pwd = request.getParameter("pass");
     
     Class.forName("com.mysql.jdbc.Driver");
-    Connection con = DriverManager.getConnection(DB_URL, USER, PASS);
+    Connection con = DriverManager.getConnection(dbURL, dbUser, dbPass);
     Statement st = con.createStatement();
 
     ResultSet rs;

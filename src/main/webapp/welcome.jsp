@@ -62,7 +62,7 @@ Array.min = function(array) {
     <p id="recentSearches">
         <strong>Recent Searches:</strong>
         <div class="recent">
-          <p><%=request.getAttribute("title")%></p>
+          <p><%=request.getAttribute("title").toString()%></p>
           <p><img src="Pictures/images.jpg" width="222" height="138" /></p>
         </div>
         <div class="recent">

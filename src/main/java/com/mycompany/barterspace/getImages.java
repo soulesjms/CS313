@@ -106,8 +106,8 @@ public class getImages extends HttpServlet {
             
             String title = rs.getString("title");
             
-            request.setAttribute("title", title);
-            getServletContext().getRequestDispatcher("/welcome.jsp").forward(request, response);
+            //request.setAttribute("title", title);
+            //getServletContext().getRequestDispatcher("/welcome.jsp").forward(request, response);
             
             // sends the statement to the database server
             
@@ -124,8 +124,8 @@ public class getImages extends HttpServlet {
                     ex.printStackTrace();
                 }
             }
-            //request.setAttribute("image", message);
-            //getServletContext().getRequestDispatcher("/welcome.jsp").forward(request, response);
+            //request.setAttribute("title", title);
+            getServletContext().getRequestDispatcher("/welcome.jsp").forward(request, response);
         }
 
     }

@@ -41,11 +41,6 @@
     
     Blob image = rs.getBlob("image");
     out.println("image blob is:" + image + "<br>");
-    int length = (int)image.length();
-    byte data[] = image.getBytes(0, length);
-    BufferedImage img = ImageIO.read(new ByteArrayInputStream(data));
-    String simage = img.toString();
-    out.println(simage);
 %>
 <!DOCTYPE html>
 <html>

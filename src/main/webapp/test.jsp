@@ -4,6 +4,7 @@
     Author     : Jonny
 --%>
 
+<%@page import="java.sql.ResultSetMetaData"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.DriverManager"%>
@@ -27,13 +28,20 @@
 
     ResultSet rs;
     rs = st.executeQuery("SELECT * FROM item");
-    out.println("printing out result from query: selecting title from item");
-    out.println("moving cursor to last item in result set");
+    out.println("printing out result from query: selecting title from item" + "<br>");
+    out.println("moving cursor to last item in result set" + "<br>");
     rs.last();
-    String test = rs.toString();
-    out.println("testing: " + test);
+    ResultSetMetaData rsmd = rs.getMetaData();
+    int columnsNumber = rsmd.getColumnCount();
+    while (rs.next()) {
+        for (int i = 1; i <= columnsNumber; i++) {
+            if (i > 1) out.print(",  ");
+            String columnValue = rs.getString(i);
+            out.print(columnValue + " " + rsmd.getColumnName(i));
+        }
+    }
     String title = rs.getString("title");
-    out.println("title is:" + title);
+    out.println("title is:" + title + "<br>");
     %>
 <!DOCTYPE html>
 <html>

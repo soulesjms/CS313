@@ -38,6 +38,7 @@
     
     Blob image = rs.getBlob("image");
     out.println("image blob is:" + image + "<br>");
+    out.print("<img src='" + image + "'/>");
 %>
 <!DOCTYPE html>
 <html>

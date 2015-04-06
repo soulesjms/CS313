@@ -98,16 +98,28 @@ public class getImages extends HttpServlet {
             rs.next();
             title4 = rs.getString("title");
             
+            
             ResultSet rsd = st.executeQuery("SELECT item_desc FROM item");
             rsd.first();
-            desc = rs.getBlob("item_desc").getBinaryStream().toString();
-            rsd.next();
-            desc2 = rs.getBlob("item_desc").toString();
-            rsd.next();
-            desc3 = rs.getBlob("item_desc").toString();
-            rsd.next();
-            desc4 = rs.getBlob("item_desc").toString();
+            Blob blob = rsd.getBlob("item_desc");
+            byte[] bdata = blob.getBytes(1, (int) blob.length());
+            desc = new String(bdata);
             
+            rsd.next();
+            Blob blob2 = rsd.getBlob("item_desc");
+            byte[] bdata2 = blob.getBytes(1, (int) blob.length());
+            desc2 = new String(bdata2);
+            
+            rsd.next();
+            Blob blob3 = rsd.getBlob("item_desc");
+            byte[] bdata3 = blob.getBytes(1, (int) blob.length());
+            desc3 = new String(bdata3);
+            
+            rsd.next();
+            Blob blob4 = rsd.getBlob("item_desc");
+            byte[] bdata4 = blob.getBytes(1, (int) blob.length());
+            desc4 = new String(bdata4);
+                        
             // sends the statement to the database server
             
         } catch (SQLException ex) {

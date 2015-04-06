@@ -51,6 +51,19 @@ Array.min = function(array) {
     return Math.min.apply(Math, array);
 };
 </script>
+<%
+    if ((session.getAttribute("userid") == null) || (session.getAttribute("userid") == "")) {
+%>
+You are not logged in<br/>
+<a href="index.jsp">Please Login</a>
+<%
+    } else {
+%>
+Welcome <%=session.getAttribute("userid")%>
+
+<%
+    }
+%>
 </head>
 <body onload="setupBlocks();">
     <div id="top">
@@ -58,6 +71,7 @@ Array.min = function(array) {
         <div id="login" style="float:right">
             <a href="createPost.html">Create a new post</a>
         </div>
+        <a href='logout.jsp'>Log out</a>
     </div>
     <p id="recentSearches">
         <strong>Recent Searches:</strong>
@@ -120,7 +134,6 @@ Array.min = function(array) {
 	<div class="block">
 	    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in dui velit. Curabitur purus odio, adipiscing ut vehicula at, pulvinar eu justo. Suspendisse potenti. Suspendisse dictum massa non mi posuere ac convallis nisi pellentesque. Morbi posuere mauris elementum metus interdum vestibulum. Vestibulum semper, lectus interdum aliquet pulvinar, quam libero commodo mi, a eleifend lectus nibh et tortor.</p>
 	</div>
-
 
 	<div class="block">
 	    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in dui velit. Curabitur purus odio, adipiscing ut vehicula at, pulvinar eu justVestibulum id malesuada magna. Etiam vel nunc sapien, id consectetur lacus. Donec feugiat lacus non lorem varius accumsan hendrerit ligula luctus. Matis. In lobortis, urna et posuere sagittis, lectus lacus condimentum nulla, id euismod ipsum elit at nulla.ris elementum metus interdum vestibulum. Vestibulum semper, lectus interdum aliquet pulvinar, quam libero commodo mi, a eleifend lectus nibh et tortor.</p>

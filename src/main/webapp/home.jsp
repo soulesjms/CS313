@@ -18,8 +18,8 @@
     <div id="login" style="float:right">
       <form action="login.jsp" method="post" name="loginform">
         Login:
-        <input id="login_input_username" class="login_input" type="text" name="user_name" required />	
-        <input id="login_input_password" class="login_input" type="password" name="user_password" autocomplete="off" required />
+        <input type="text" name="uname" placeholder="username" required />	
+        <input type="password" name="pass" autocomplete="off" placeholder="password" required />
         <input type="submit" name="login" value="Log in" />
         <a href="SignIn"><img src="Pictures/FBloginbutton.png" width="108" height="34" /></a>
         <a href="reg.jsp">Register</a><br />

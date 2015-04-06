@@ -100,8 +100,7 @@ public class getImages extends HttpServlet {
             
             ResultSet rsd = st.executeQuery("SELECT item_desc FROM item");
             rsd.first();
-            desc = rs.getString("item_desc");
-            //desc = rs.getBlob("item_desc").toString();
+            desc = rs.getBlob("item_desc").getBinaryStream().toString();
             rsd.next();
             desc2 = rs.getBlob("item_desc").toString();
             rsd.next();

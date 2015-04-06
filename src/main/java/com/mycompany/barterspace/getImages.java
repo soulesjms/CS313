@@ -24,6 +24,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -75,17 +76,16 @@ public class getImages extends HttpServlet {
             try {
             // connects to the database
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-            //InitialContext ic = new InitialContext();
-            //Context initialContext = (Context) ic.lookup("java:comp/env");
-            //DataSource datasource = (DataSource) initialContext.lookup("jdbc/MySQLDS");
-            //conn = datasource.getConnection();
-            conn = (Connection) DriverManager.getConnection(dbURL, dbUser, dbPass);
+            conn = DriverManager.getConnection(dbURL, dbUser, dbPass);
+            Statement st = conn.createStatement();
  
             // constructs SQL statement
             
-            String sql = "SELECT title FROM item WHERE item_id=1";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            ResultSet rs = statement.executeQuery();
+            //String sql = "SELECT title FROM item WHERE item_id=1";
+            //PreparedStatement statement = conn.prepareStatement(sql);
+            ResultSet rs = st.executeQuery("SELECT title FROM item");
+            rs.first();
+            title = rs.getString("title");
             //Blob image = rs.getBlob(1);
             //byte[] buf = new byte[4096];
             //OutputStream to = new ByteArrayOutputStream();
@@ -104,8 +104,6 @@ public class getImages extends HttpServlet {
             
             //ArrayList al = null;
             //ArrayList title = new ArrayList();
-            
-            title = rs.getString("title");
             
             //request.setAttribute("title", title);
             //getServletContext().getRequestDispatcher("/welcome.jsp").forward(request, response);

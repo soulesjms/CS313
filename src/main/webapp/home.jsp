@@ -70,7 +70,7 @@ body {
 </head>
 <body>
     <div id="top">
-        <div id="logo"><a href="home.jsp"><img src="Logo.png" width="214" height="131" /></a></div>
+        <div id="logo"><a href="home.jsp"><img src="Pictures/Logo.png" width="214" height="131" /></a></div>
         <div id="login" style="float:right">
             <form role="form" action="login.jsp" method="post" name="loginform">
                 <p>Login:

@@ -107,17 +107,17 @@ public class getImages extends HttpServlet {
             
             rsd.next();
             Blob blob2 = rsd.getBlob("item_desc");
-            byte[] bdata2 = blob.getBytes(1, (int) blob.length());
+            byte[] bdata2 = blob2.getBytes(1, (int) blob.length());
             desc2 = new String(bdata2);
             
             rsd.next();
             Blob blob3 = rsd.getBlob("item_desc");
-            byte[] bdata3 = blob.getBytes(1, (int) blob.length());
+            byte[] bdata3 = blob3.getBytes(1, (int) blob.length());
             desc3 = new String(bdata3);
             
             rsd.next();
             Blob blob4 = rsd.getBlob("item_desc");
-            byte[] bdata4 = blob.getBytes(1, (int) blob.length());
+            byte[] bdata4 = blob4.getBytes(1, (int) blob.length());
             desc4 = new String(bdata4);
                         
             // sends the statement to the database server

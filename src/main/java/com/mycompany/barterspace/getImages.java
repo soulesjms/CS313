@@ -115,7 +115,7 @@ public class getImages extends HttpServlet {
             byte[] bdata3 = blob3.getBytes(1, (int) blob.length());
             desc3 = new String(bdata3);
             
-            rsd.next();
+            rsd.last();
             Blob blob4 = rsd.getBlob("item_desc");
             byte[] bdata4 = blob4.getBytes(1, (int) blob.length());
             desc4 = new String(bdata4);

@@ -88,27 +88,27 @@ Welcome <%=session.getAttribute("userid")%>
           <p><img src="Pictures/dF6DITZNDVYNEGRh.jpg" width="192" height="144" /></p>
         </div>
         <div class="recent">
-            <%=request.getAttribute("title4")%>
-            <img src="Pictures/ps4.jpg" width="282" height="179" />
+            <p><%=request.getAttribute("title4")%></p>
+            <p><img src="Pictures/ps4.jpg" width="282" height="179" /></p>
         </div>
     </p>
     <div>
         <!-- this is where we want to place the posts to our user. 
         The above posts are the posts the host wants to show the user.-->
         <div class="block">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in dui velit. Curabitur purus odio, adipiscing ut vehicula at, pulvinar eu justo. Suspendisse potenti. Suspendisse dictum massa non mi posuere ac convallis nisi pellentesque. Morbi posuere mauris elementum metus intlla faProin et malesuada arcu. Quisque sed nulla odio, at interdum diam. Proin mollis, dui eget tristique dictum, diam purus hendrerit urna, lacinia interdum sem justo sit amet justo. Morbi a neque ut velit tempus auctor. Sed condimentum dolor in est facilisis id malesuad</p>
+            <p><%=request.getAttribute("desc")%></p>
         </div>
 
 	<div class="block">
-	    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in dui velit. Curabitur purus odio, adipiscing ut vehicula at, pulvinar eu justo. Suspendisse potenti. Suspendisse dictum massa non mi posuere ac convallis nisi pellentesque. Morbi posuere mauris elementum metus interdum vestibulum. Vestibulum semper, lectus interdum aliquet pulvinar, quam libero commodo mi, a eleifend lectus nibh et tortor.</p>
+	    <p><%=request.getAttribute("desc2")%></p>
 	</div>
 
 	<div class="block">
-	    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in dui velit. Curabitur purus odio, adipiscing ut vehicula at, pulvinar eu elementum metus interdum vestibulum. Vestibulum semper, lectus interdum aliquet pulvinar, quam libero commodo mi, a eleifend lectus nibh et tortor.</p>
+	    <p><%=request.getAttribute("desc3")%></p>
 	</div>
 
 	<div class="block">
-	    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in dui velit. Curabitur purus odio, adipiscing ut vehicula at, pulvinar eu justo. ecenas fringilla faucibus adipiscing. In feugiat, ipsum non posuere aliquam, purus nisi feugiat metus, mattis dapibus ipsum justo at risus. Morbi leo mauris, tristique facilisis consequat quis, volutpat quis tellus. Quisque semper, urna nec egestas venenatis, urna sem pellentesque ante, quis vestibulum augue massa vel arcu. Suspendisse porttitor posuere viverra. Cras vel ligula nunc, vitae congue lorem. Etiam aliquet nisl et diam iaculis id vulputate urna lobornibh et tortor.</p>
+	    <p><%=request.getAttribute("desc4")%></p>
 	</div>
 
 	<div class="block">

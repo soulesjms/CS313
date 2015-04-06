@@ -75,6 +75,10 @@ public class getImages extends HttpServlet {
         String title2 = null;
         String title3 = null;
         String title4 = null;
+        String desc = null;
+        String desc2 = null;
+        String desc3 = null;
+        String desc4 = null;
         
             try {
             // connects to the database
@@ -94,6 +98,16 @@ public class getImages extends HttpServlet {
             rs.next();
             title4 = rs.getString("title");
             
+            ResultSet rsd = st.executeQuery("SELECT item_desc FROM item");
+            rsd.first();
+            desc = rs.getBlob("item_desc").toString();
+            rsd.next();
+            desc2 = rs.getBlob("item_desc").toString();
+            rsd.next();
+            desc3 = rs.getBlob("item_desc").toString();
+            rsd.next();
+            desc4 = rs.getBlob("item_desc").toString();
+            
             // sends the statement to the database server
             
         } catch (SQLException ex) {
@@ -112,6 +126,10 @@ public class getImages extends HttpServlet {
             request.setAttribute("title2", title2);
             request.setAttribute("title3", title3);
             request.setAttribute("title4", title4);
+            request.setAttribute("desc", desc);
+            request.setAttribute("desc2", desc2);
+            request.setAttribute("desc3", desc3);
+            request.setAttribute("desc4", desc4);
             getServletContext().getRequestDispatcher("/welcome.jsp").forward(request, response);
         }
 

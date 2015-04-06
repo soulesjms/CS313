@@ -80,15 +80,15 @@ Welcome <%=session.getAttribute("userid")%>
           <p><img src="Pictures/images.jpg" width="222" height="138" /></p>
         </div>
         <div class="recent">
-          <p>Shoes</p>
+          <p><%=request.getAttribute("title2")%></p>
           <p><img src="Pictures/index.jpg" width="213" height="141" /></p>
         </div>
         <div class="recent">
-          <p>Phones</p>
+          <p><%=request.getAttribute("title3")%></p>
           <p><img src="Pictures/dF6DITZNDVYNEGRh.jpg" width="192" height="144" /></p>
         </div>
         <div class="recent">
-            Game Systems
+            <%=request.getAttribute("title4")%>
             <img src="Pictures/ps4.jpg" width="282" height="179" />
         </div>
     </p>

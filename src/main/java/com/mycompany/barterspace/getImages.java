@@ -72,6 +72,9 @@ public class getImages extends HttpServlet {
         Connection conn = null; // connection to the database
         String message = null;  // message will be sent back to client
         String title = null;
+        String title2 = null;
+        String title3 = null;
+        String title4 = null;
         
             try {
             // connects to the database
@@ -81,36 +84,18 @@ public class getImages extends HttpServlet {
  
             // constructs SQL statement
             
-            //String sql = "SELECT title FROM item WHERE item_id=1";
-            //PreparedStatement statement = conn.prepareStatement(sql);
             ResultSet rs = st.executeQuery("SELECT title FROM item");
             rs.first();
             title = rs.getString("title");
-            //Blob image = rs.getBlob(1);
-            //byte[] buf = new byte[4096];
-            //OutputStream to = new ByteArrayOutputStream();
-            
-            /*try(InputStream is = image.getBinaryStream()){
-                while(true){
-                    int r = is.read(buf);
-                    if (r == -1){
-                        break;
-                    }
-                    to.write(buf, 0, r);
-                }
-            }
-            PrintWriter out = response.getWriter();
-            request.setAttribute("image", image);*/
-            
-            //ArrayList al = null;
-            //ArrayList title = new ArrayList();
-            
-            //request.setAttribute("title", title);
-            //getServletContext().getRequestDispatcher("/welcome.jsp").forward(request, response);
+            rs.next();
+            title2 = rs.getString("title");
+            rs.next();
+            title3 = rs.getString("title");
+            rs.next();
+            title4 = rs.getString("title");
             
             // sends the statement to the database server
             
-
         } catch (SQLException ex) {
             message = "ERROR: " + ex.getMessage();
             ex.printStackTrace();
@@ -124,6 +109,9 @@ public class getImages extends HttpServlet {
                 }
             }
             request.setAttribute("title", title);
+            request.setAttribute("title2", title2);
+            request.setAttribute("title3", title3);
+            request.setAttribute("title4", title4);
             getServletContext().getRequestDispatcher("/welcome.jsp").forward(request, response);
         }
 
